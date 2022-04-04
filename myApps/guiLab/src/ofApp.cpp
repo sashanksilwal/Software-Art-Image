@@ -2,15 +2,26 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetFrameRate(10);
+    
     gui.setup();
-    gui.add(label.setup("label", "You can change the thickness below"));
-    gui.add(intSlider.setup("Thickness", 64, 3, 100));
-    gui.add(toggle.setup("Multiple Lines",false));
-    gui.add(button.setup("Randomize Color"));
-    gui.add(label.setup("label", "You can change the color below"));
-    gui.add(vec4slider.setup("Change Color", ofVec4f(30,130,140,150), ofVec4f(0,0,0,100), ofVec4f(255,255,255,255)));
-    gui.add(vec3slider.setup("Change Color of Additional Lines", ofVec3f(100,90,80), ofVec3f(0,0,0), ofVec3f(255,255,255)));
+    gui.add(intSlider.setup("start value", 64, 3, 100));
+    gui.add(floatSlider.setup("float slider", 20.0, 0.0, 100.0));
+    
+    gui.add(toggle.setup("Toggle",true));
+    gui.add(button.setup("button"));
+    
+    gui.add(label.setup("label", "this is a label"));
+    
+    gui.add(intField.setup("Int Field", 30, 0,100));
+    gui.add(floatField.setup("floatField", 80.0, 0.0, 1000));
+    gui.add(textField.setup("Text Field", "Text"));
+    
+    gui.add(vec2slider.setup("Vec 2 slider", ofVec2f(1.0, 100.0), ofVec2f(0,0), ofVec2f(ofGetWindowWidth(), ofGetWindowHeight())));
+    
+    gui.add(vec3slider.setup("Vec 3 slider", ofVec3f(100,90,80), ofVec3f(0,0,0), ofVec3f(255,255,255)));
+    
+    gui.add(vec4slider.setup("Vec 4 slider", ofVec4f(0,0,0,0), ofVec4f(0,0,0,0), ofVec4f(255,255,255,255)));
+    
     
     size = 10;
     x1 = 0;
@@ -27,29 +38,33 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
- 
-    ofSetLineWidth(intSlider);
-//    myLine.draw();
-    if (toggle){
-        ofSetColor(vec3slider->x, vec3slider->y, vec3slider->z );
-        ofDrawLine(ofGetWindowWidth()-x1, ofGetWindowHeight()-y1,x2,y2);
-        ofDrawLine(ofGetWindowWidth()-x1, ofGetWindowHeight()-y1,ofGetWindowWidth() - x2,ofGetWindowHeight() - y2);
-    }
-    ofSetColor(vec4slider->x, vec4slider->y, vec4slider->z, vec4slider->w);
+//    int speedDivisor = 10;
+//
+//    if(ofGetFrameNum() % speedDivisor != 0)
+//    {
+//        return;
+//    }
     
     if (button){
-        ofSetColor(ofRandom(vec4slider -> x), ofRandom(vec4slider -> y),ofRandom(vec4slider -> z),255);
+        ofSetColor(ofRandom(vec3slider -> x), ofRandom(vec3slider -> y),ofRandom(vec3slider -> z));
     }
-    
-    x2 = int(x2+ ofRandom(ofGetWindowWidth())) %  ofGetWindowWidth();
-    y2 = int(y2+ofRandom(ofGetWindowHeight())) % ofGetWindowHeight();
-    
-    x1 = x2;
-    y1 = y2;
-    
-    ofDrawLine(x1, y1,x2,y2);
-    ofDrawLine(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()),ofGetWindowWidth() - x2,ofGetWindowHeight() - y2);
+    ofDrawCircle(ofGetWindowWidth()/2, ofGetWindowHeight()/2, 128);
+    ofSetCircleResolution(intSlider);
+    ofSetColor(vec4slider->x, vec4slider->y, vec4slider->z, vec4slider->w);
+    ofDrawCircle(vec2slider->x, vec2slider->y, 123);
     gui.draw();
+//    ofColor ofDrawCol;
+//    ofDrawCol.setHsb(155,155,155,80);
+   
+//    ofSetLineWidth(size);
+//    myLine.draw();
+//    x2 = int(x2+ ofRandom(ofGetWindowWidth())) %  ofGetWindowWidth();
+//    y2 = int(y2+ofRandom(ofGetWindowHeight())) % ofGetWindowHeight();
+//    ofDrawLine(x1, y1,x2,y2);
+//    x1 = x2;
+//    y1 = y2;
+//    ofDrawLine(ofGetWindowWidth(), 0,ofGetWindowWidth()- x2,ofGetWindowHeight() -y2);
+
 }
 
 //--------------------------------------------------------------
