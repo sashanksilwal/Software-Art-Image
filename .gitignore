@@ -11,6 +11,11 @@ config.make
 Project.xcconfig
 openFrameworks-Info.plist
 *.xcodeproj
+myApps/*/*.xcodeproj
+myApps/*/addons.make
+myApps/*/config.make
+myApps/*/Project.xcconfig
+myApps/*/openFrameworks-Info.plist
 
 # Following from
 # https://gist.github.com/brannondorsey/1df079ea84266e5c5a959602689e2370
