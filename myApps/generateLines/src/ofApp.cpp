@@ -5,50 +5,63 @@ void ofApp::setup(){
     ofSetFrameRate(10);
     gui.setup();
     gui.add(label.setup("label", "You can change the thickness below"));
-    gui.add(intSlider.setup("Thickness", 64, 3, 100));
     gui.add(toggle.setup("Multiple Lines",false));
     gui.add(button.setup("Randomize Color"));
     gui.add(label.setup("label", "You can change the color below"));
-    gui.add(vec4slider.setup("Change Color", ofVec4f(30,130,140,150), ofVec4f(0,0,0,100), ofVec4f(255,255,255,255)));
-    gui.add(vec3slider.setup("Change Color of Additional Lines", ofVec3f(100,90,80), ofVec3f(0,0,0), ofVec3f(255,255,255)));
+    gui.add(vec4slider.setup("Change Color", ofVec4f(208,130,140,150), ofVec4f(0,0,0,100), ofVec4f(255,255,255,255)));
+    gui.add(vec3slider.setup("Change Color of Additional Lines", ofVec3f(25,200,180), ofVec3f(0,0,0), ofVec3f(255,255,255)));
+    gui.add(intSlider.setup("No Lines", 360, 10, 720));
     
     size = 10;
     x1 = 0;
     y1 = 0;
     x2 = 100;
     y2 = 100;
-    ofSetFrameRate(15);
-}
+    
+    
+    radius = 0;
+    minRadius = 200;
+    maxRadius = 400;
+     
+ }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    myLine.addVertex( ofRandom(ofGetWindowWidth()),   ofRandom(ofGetWindowHeight()));
-}
+    
+ }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
- 
-    ofSetLineWidth(intSlider);
-//    myLine.draw();
+    ofColor c;
     if (toggle){
-        ofSetColor(vec3slider->x, vec3slider->y, vec3slider->z );
-        ofDrawLine(ofGetWindowWidth()-x1, ofGetWindowHeight()-y1,x2,y2);
-        ofDrawLine(ofGetWindowWidth()-x1, ofGetWindowHeight()-y1,ofGetWindowWidth() - x2,ofGetWindowHeight() - y2);
+        for (int i = 1; i < intSlider; i++) {
+            ofSetColor(vec3slider->x, vec3slider->y, vec3slider->z );
+            ofDrawLine(ofGetWindowWidth()/2, ofGetWindowHeight()/2,ofRandom(ofGetWindowWidth()),ofRandom(ofGetWindowHeight()));
+        }
     }
     ofSetColor(vec4slider->x, vec4slider->y, vec4slider->z, vec4slider->w);
     
-    if (button){
-        ofSetColor(ofRandom(vec4slider -> x), ofRandom(vec4slider -> y),ofRandom(vec4slider -> z),255);
+   
+    
+    for (int i = 1; i < intSlider; i++) {
+        radius = ofMap(ofNoise(tx1), 0, 1, minRadius, maxRadius);
+         
+        deg +=  1;
+        
+        radian = (TWO_PI / 360) * (deg % 360);
+        location.x = radius * cos(radian);
+        location.y = radius * sin(radian);
+        
+        c.setHsb(ofMap(radian, 0, TWO_PI, 0, 255), 255, ofMap(radius, minRadius, maxRadius, 0, 255), 255);
+        ofSetColor(c);
+        
+        if (button){
+            ofSetColor(ofRandom(vec4slider -> x), ofRandom(vec4slider -> y),ofRandom(vec4slider -> z),255);
+        }
+        ofDrawLine(ofGetWindowWidth()/2, ofGetWindowHeight()/2, ofGetWindowWidth()/2+location.x, ofGetWindowHeight()/2+location.y);
     }
-    
-    x2 = int(x2+ ofRandom(ofGetWindowWidth())) %  ofGetWindowWidth();
-    y2 = int(y2+ofRandom(ofGetWindowHeight())) % ofGetWindowHeight();
-    
-    x1 = x2;
-    y1 = y2;
-    
-    ofDrawLine(x1, y1,x2,y2);
-    ofDrawLine(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()),ofGetWindowWidth() - x2,ofGetWindowHeight() - y2);
+   
+ 
     gui.draw();
 }
 

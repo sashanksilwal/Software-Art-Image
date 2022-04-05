@@ -42,6 +42,16 @@ class ofApp : public ofBaseApp{
         ofxVec3Slider vec3slider;
         ofxVec4Slider vec4slider;
     
+        ofVec2f location;
+        int radius;
+        int minRadius;
+        int maxRadius;
+        int deg;
+         
+        float radian;
+        float tx1;
+         
+    
         
         
 };
