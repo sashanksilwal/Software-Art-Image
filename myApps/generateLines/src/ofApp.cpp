@@ -44,8 +44,8 @@ void ofApp::draw(){
    
     
     for (int i = 1; i < intSlider; i++) {
-        tx1 += 0.01;
-        radius = ofMap(ofNoise(tx1), 0, 1, minRadius, maxRadius);
+        noisex1 += 0.01;
+        radius = ofMap(ofNoise(noisex1), 0, 1, minRadius, maxRadius);
          
         deg +=  1;
         

@@ -49,7 +49,7 @@ class ofApp : public ofBaseApp{
         int deg;
          
         float radian;
-        float tx1;
+        float noisex1;
          
         ofImage imageScreenshot;
         int cnt;
