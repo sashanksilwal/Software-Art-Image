@@ -45,3 +45,5 @@ for (int i = 1; i < intSlider; i++) {
 
 
 ![](bin/data/ss_3.png)
+
+![](bin/data/ss_5.png)
