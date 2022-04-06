@@ -16,7 +16,10 @@
 ```C++
 
 for (int i = 1; i < intSlider; i++) {
-        radius = ofMap(ofNoise(tx1), 0, 1, minRadius, maxRadius);
+        
+        radius =   minRadius;
+         
+         
          
         deg +=  1;
         
