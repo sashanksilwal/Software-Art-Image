@@ -18,7 +18,7 @@ void ofApp::setup(){
     x2 = 100;
     y2 = 100;
     
-    
+    cnt = 5;
     radius = 0;
     minRadius = 200;
     maxRadius = 400;
@@ -44,7 +44,8 @@ void ofApp::draw(){
    
     
     for (int i = 1; i < intSlider; i++) {
-        radius =   minRadius;
+        tx1 += 0.01;
+        radius = ofMap(ofNoise(tx1), 0, 1, minRadius, maxRadius);
          
         deg +=  1;
         
@@ -72,7 +73,7 @@ void ofApp::keyPressed(int key){
     }
     if (key == ' '){
         imageScreenshot.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
-        imageScreenshot.save("screenshot" + ofToString(cnt) + ".png");
+        imageScreenshot.save("ss_" + ofToString(cnt) + ".png");
         cnt ++;
     }
 }
