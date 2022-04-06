@@ -17,7 +17,8 @@
 
 for (int i = 1; i < intSlider; i++) {
         
-        radius =   minRadius;
+        noisex1 += 0.01;
+        radius = ofMap(ofNoise(tx1), 0, 1, minRadius, maxRadius);
          
          
          
