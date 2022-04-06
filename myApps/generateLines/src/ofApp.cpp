@@ -70,6 +70,11 @@ void ofApp::keyPressed(int key){
     if (key == 'f'){
         ofToggleFullscreen();
     }
+    if (key == ' '){
+        imageScreenshot.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+        imageScreenshot.save("screenshot" + ofToString(cnt) + ".png");
+        cnt ++;
+    }
 }
 
 //--------------------------------------------------------------

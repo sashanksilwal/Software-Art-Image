@@ -51,6 +51,8 @@ class ofApp : public ofBaseApp{
         float radian;
         float tx1;
          
+        ofImage imageScreenshot;
+        int cnt;
     
         
         
