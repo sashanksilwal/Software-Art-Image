@@ -4,6 +4,7 @@
 
 *Coding an openFrameworks app that makes a drawing with lines and points that can be controlled by sliders.*
 
+In this assignment, I wanted to explore the color scheme with HSV and randomness. So the user can toggle between the two different color pattern. I was inspired by the color theory video we watched for the class last week.
 
 
 ## Algorithm
@@ -11,7 +12,7 @@
 - Calculating the radius 
 - Adding 1 degree for each line 
 - calculating the location using trig 
-- finding the color w.r.t. the location
+- finding the color w.r.t. the location (using Hue Saturation Value)
 
 ```C++
 
