@@ -13,6 +13,30 @@ For this assignment, I took inspiration from Jan Stark's  [Vortex](https://www.j
 
 I started by looking for help in the of book chapter **[Into To Graphis](http://openframeworks.kr/ofBook/chapters/intro_to_graphics.html)** which 
 
+```
+
+for (int i=0; i<100; i++) {
+        
+        int val = i;
+        val = val % colorVal;
+        ofColor c;
+        
+        c.setHsb(ofMap(val, 0, 10, 0, 255), 255, 255, 255);
+        ofSetColor(c);
+        ofNoFill();
+        
+        // Draw the smallest rectangle first and scale out to bigger ones progressively
+        ofScale(1.1, 1.1);
+
+        
+        float noise = ofSignedNoise(rotation) * 20.0;
+        ofRotate(noise);
+
+        ofDrawRectangle(0, 0, 50, 50);
+    }
+ 
+ 
+ ```
 
 ## Reflection 
 
