@@ -3,7 +3,7 @@
 
 ## Description
 
-Vortex in Nature: [Galaxies](https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fspiral%2520galaxy%2F&psig=AOvVaw2CjqWG3u-D5-Xn58MVfgyb&ust=1649760452165000&source=images&cd=vfe&ved=0CAcQjRxqFwoTCMCohOLqi_cCFQAAAAAdAAAAABAI), [Ocean](https://www.worldatlas.com/r/w960-q80/upload/fc/ab/9b/shutterstock-1038169048.jpg), [Thumb Print](https://thumbs.dreamstime.com/b/human-fingerprint-finger-print-biometric-scan-line-art-vector-icon-apps-websites-human-fingerprint-finger-print-162436744.jpg)
+Spirals in Nature: [Galaxies](https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fspiral%2520galaxy%2F&psig=AOvVaw2CjqWG3u-D5-Xn58MVfgyb&ust=1649760452165000&source=images&cd=vfe&ved=0CAcQjRxqFwoTCMCohOLqi_cCFQAAAAAdAAAAABAI), [Ocean](https://www.worldatlas.com/r/w960-q80/upload/fc/ab/9b/shutterstock-1038169048.jpg), [Thumb Print](https://thumbs.dreamstime.com/b/human-fingerprint-finger-print-biometric-scan-line-art-vector-icon-apps-websites-human-fingerprint-finger-print-162436744.jpg)
 
 For this assignment, I took inspiration from Jan Stark's  [Vortex](https://www.jenstark.com/vortex) which was posted on the course discussion on Brightspace. I tried to replicated similar patters which can then be controlled by sliders to generate unique patterns. I figured the colors for the shapes also give rise to different emotions hence the user can select that too.
 
