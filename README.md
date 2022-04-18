@@ -34,3 +34,5 @@ Software Art: Image is a complement to Software Art: Text, a 7-week course appro
 [Sketch 1](https://github.com/sashanksilwal/Software-Art-Image/tree/main/myApps/generateLines)
 
 [Assignment 1: Still](https://github.com/sashanksilwal/Software-Art-Image/tree/main/myApps/Still)
+
+[Sketch 2](https://github.com/sashanksilwal/Software-Art-Image/tree/main/myApps/cyclicalAnimation)
