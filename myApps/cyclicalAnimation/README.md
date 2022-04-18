@@ -19,19 +19,22 @@ For this assignment, I tried other iterations as well but stuck with my first as
 
 ## Video:
 
-![](bin/data/animaiton.gif)
+![](bin/data/canimation.gif)
 
 ## Code for cyclical animation
+
+Here, the value of sine is used to oscillate the rotation between 0 to 90 degrees.
 
 ```C++
 
         float time = ofGetElapsedTimef();
         float noise = time * 2 + ofSignedNoise(rotation)  ;
-        ofRotate(2*sin(noise));
+        ofRotate(ofMap(sin(noise), -1, 1, 0, 90));
         ofDrawRectangle(0, 0, 50, 50);
 
 ```
 
 ## Video
 
-![](bin/data/canimation.gif)
+![](bin/data/animaiton.gif)
+
