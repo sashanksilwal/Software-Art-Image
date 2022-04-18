@@ -19,7 +19,7 @@ For this assignment, I tried other iterations as well but stuck with my first as
 
 ## Video:
 
-![]()
+![](bin/data/animaiton.gif)
 
 ## Code for cyclical animation
 
@@ -33,3 +33,5 @@ For this assignment, I tried other iterations as well but stuck with my first as
 ```
 
 ## Video
+
+![](bin/data/canimation.gif)
