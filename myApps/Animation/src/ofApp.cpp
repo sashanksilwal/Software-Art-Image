@@ -10,7 +10,7 @@ void ofApp::setup(){
     bandsToGet = 50;
     
     b_gui = true;
-    decay = 0.9f;
+    decay = 0.8f;
     ofSetBackgroundAuto(false);
     fft_decay = new float[bandsToGet];
     for (int i = 0; i < bandsToGet; i++) {
@@ -40,21 +40,17 @@ void ofApp::update(){
         
     }
     
-    //    for (int j=0; j< fft[0]; j++){
-    //    if (fft[i] > 0.05){
-    //        hue = ofRandom(255);
-    //        particle newParticles(ofGetWindowWidth()/2, ofGetWindowHeight()/2, hue);
-    //        particles.push_back(newParticles);
-    //    }
-    //
-    
+  
+//    ofLog() <<"Begin "<< particles.size();
     for (int i=0; i<particles.size(); i++){
         particles[i].update();
+ 
         if (particles[i].size <= 0){
+            
             particles.erase( particles.begin(), particles.begin()+i);
         }
     }
-    //    ofLog() << particles.size();
+//        ofLog() <<"End "<< particles.size();
     
     //    particles.erase( particles.begin(), particles.begin()+2 );
     
@@ -80,7 +76,6 @@ void ofApp::draw(){
     for (int i = 0; i < bandsToGet; i++) {
         ofColor newColor;
         ofPushMatrix();
-        //        ofSetColor(0,120,220);
         newColor.setHsb(ofMap(i, 0, bandsToGet,   255, 0), 255, 255, 200);
         ofSetColor(newColor);
         ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
@@ -192,7 +187,7 @@ particle::particle(int startX, int startY, int hue){
 void particle::update(){
     position += direction;
     
-    if (size > 1){
+    if (size > 0){
         size -= 0.07;
     }
     

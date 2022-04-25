@@ -4,7 +4,7 @@
 class particle{
 public:
     float size;
-    glm::vec2 force, position, direction;
+    glm::vec2 position, direction;
     
     void update();
     void draw();
