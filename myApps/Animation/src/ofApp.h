@@ -48,4 +48,6 @@ class ofApp : public ofBaseApp{
     
     ofImage imageScreenshot;
     string timestampedFilename();
+    
+    int choice;
 };

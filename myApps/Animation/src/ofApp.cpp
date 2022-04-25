@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    mp3Audio.load("audio.mp3");
+    mp3Audio.load("audio0.mp3");
     mp3Audio.play();
     mp3Audio.setLoop(true);
     mp3Audio.setSpeed(1);
@@ -16,6 +16,8 @@ void ofApp::setup(){
     for (int i = 0; i < bandsToGet; i++) {
         fft[i] = 0.0f;
     }
+    
+    choice = 0;
 }
 
 //--------------------------------------------------------------
@@ -82,7 +84,7 @@ void ofApp::draw(){
         ofColor newColor;
         ofPushMatrix();
 //        ofSetColor(0,120,220);
-        newColor.setHsb(ofMap(i, 0, bandsToGet, 0, 255), 255, 255, 200);
+        newColor.setHsb(ofMap(i, 0, bandsToGet,   255, 0), 255, 255, 200);
         ofSetColor(newColor);
         ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
         ofRotate(360.0 /bandsToGet*i);
@@ -147,6 +149,9 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     
+//    choice = (choice + 1) % 2;
+//    mp3Audio.load("audio1.mp3");
+    
 }
 
 //--------------------------------------------------------------
@@ -184,7 +189,7 @@ particle::particle(int startX, int startY, int hue){
     position = glm::vec2(startX, startY);
     direction = glm::vec2(ofRandom(-2.0,2.0), ofRandom(-2.0,2.0));
     size = 20;
-    color.setHsb(hue, 255, 255, 200);
+    color.setHsb(hue, 120, 255, 200);
 }
 
 void particle::update(){
