@@ -12,9 +12,9 @@ void ofApp::setup(){
     b_gui = true;
     decay = 0.9f;
     ofSetBackgroundAuto(false);
-    fft = new float[bandsToGet];
+    fft_decay = new float[bandsToGet];
     for (int i = 0; i < bandsToGet; i++) {
-        fft[i] = 0.0f;
+        fft_decay[i] = 0.0f;
     }
     
     choice = 0;
@@ -24,43 +24,40 @@ void ofApp::setup(){
 void ofApp::update(){
     soundSpectrum = ofSoundGetSpectrum(bandsToGet);
     for (int i = 0; i < bandsToGet; i++) {
-        fft[i] *= decay;
+        fft_decay[i] *= decay;
         
-        
-        
-        
-        
-        if (fft[i] < soundSpectrum[i]) {
-            fft[i] = soundSpectrum[i];
+        if (fft_decay[i] < soundSpectrum[i]) {
+            fft_decay[i] = soundSpectrum[i];
         }
+        
         hue = ofRandom(255) ;
-        if (fft[i] > 0.06){
+        if (fft_decay[i] > 0.06){
             
             particle newParticles(ofGetWindowWidth()/2, ofGetWindowHeight()/2, hue);
             particles.push_back(newParticles);
         }
         
-    
+        
     }
     
-//    for (int j=0; j< fft[0]; j++){
-//    if (fft[i] > 0.05){
-//        hue = ofRandom(255);
-//        particle newParticles(ofGetWindowWidth()/2, ofGetWindowHeight()/2, hue);
-//        particles.push_back(newParticles);
-//    }
-//
+    //    for (int j=0; j< fft[0]; j++){
+    //    if (fft[i] > 0.05){
+    //        hue = ofRandom(255);
+    //        particle newParticles(ofGetWindowWidth()/2, ofGetWindowHeight()/2, hue);
+    //        particles.push_back(newParticles);
+    //    }
+    //
     
     for (int i=0; i<particles.size(); i++){
         particles[i].update();
-         if (particles[i].size <= 0){
-             particles.erase( particles.begin(), particles.begin()+i);
+        if (particles[i].size <= 0){
+            particles.erase( particles.begin(), particles.begin()+i);
         }
     }
-//    ofLog() << particles.size();
-
-//    particles.erase( particles.begin(), particles.begin()+2 );
-   
+    //    ofLog() << particles.size();
+    
+    //    particles.erase( particles.begin(), particles.begin()+2 );
+    
 }
 
 //--------------------------------------------------------------
@@ -83,19 +80,19 @@ void ofApp::draw(){
     for (int i = 0; i < bandsToGet; i++) {
         ofColor newColor;
         ofPushMatrix();
-//        ofSetColor(0,120,220);
+        //        ofSetColor(0,120,220);
         newColor.setHsb(ofMap(i, 0, bandsToGet,   255, 0), 255, 255, 200);
         ofSetColor(newColor);
         ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
         ofRotate(360.0 /bandsToGet*i);
-        ofDrawRectangle(100, -20/2, 800*fft[i]+1, 10);
+        ofDrawRectangle(100, -20/2, 800*fft_decay[i]+1, 10);
         
         ofPopMatrix();
     }
     for (int i=0; i<particles.size(); i++){
         particles[i].draw();
     }
-
+    
     
 }
 
@@ -128,12 +125,12 @@ void ofApp::keyReleased(int key){
             ofLog(OF_LOG_NOTICE, "Saving image to %s", filename.c_str());
             this->saveImage(filename);
             break;
-//        default:
-//            break;
-                
+            //        default:
+            //            break;
+            
     }
     
-        
+    
 }
 
 //--------------------------------------------------------------
@@ -149,8 +146,8 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     
-//    choice = (choice + 1) % 2;
-//    mp3Audio.load("audio1.mp3");
+    //    choice = (choice + 1) % 2;
+    //    mp3Audio.load("audio1.mp3");
     
 }
 
@@ -203,7 +200,7 @@ void particle::update(){
     if (brightness > 20){
         color.setBrightness(brightness -= 0.07);
     }
-   
+    
     
 }
 
