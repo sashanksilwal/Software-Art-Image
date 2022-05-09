@@ -46,21 +46,34 @@ public:
     void setNormalize(bool _normalize);
     
     void drawBars();
+    
+    // function to draw the circles art
     void soundArt();
+    
+    // functio to draw the experimental circles and image art
     void experiment();
+    
+    // function to draw the image art
     void soundArtImage();
     void drawDebug();
     
+    // function to get the range of volume
     int getVolumeRange();
-    int noImage;
+  
+    // funciton to get the number of images 
     int getNoImage();
     void setNoImage(int img);
 
+    void drawImages(int i);
     
+    int noImage;
 private:
    
+    // vector to read the images 
     ofPolyline line;
     vector <ofImage> image;
+    
+    // =============================================================================================================
     bool    normalize; //decide if you want the values between 0 and 1 or between 0 - 1000
     int     volumeRange; //use if you're not normalizing so you can give things a proper range for visualization
     

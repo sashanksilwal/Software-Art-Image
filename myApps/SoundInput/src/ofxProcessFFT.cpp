@@ -36,7 +36,7 @@ void ProcessFFT::setup(){
     delta = loudestBand = noisiness = maxSound = avgMaxSoundOverTime = 0;
     
     normalize = false;
-    volumeRange = 10; //only used if normalize is false
+    volumeRange = 300; //only used if normalize is false
     
     
     
@@ -351,6 +351,10 @@ void ProcessFFT::drawBars(){
 }
 
 //---------------------------------------------
+// Edited Code: Sashank
+//---------------------------------------------
+
+//---------------------------------------------
 void ProcessFFT::soundArt(){
     
      
@@ -410,10 +414,15 @@ void ProcessFFT::soundArt(){
     }
     
 }
-//---------------------------------------------
+
+
+/**
+* func:        experiment
+* input:
+* process:    Draws the image bars based on the sound input
+* output:        Art experimental art with image and circles
+*/
 void ProcessFFT::experiment(){
-    
-    //not normalized
     
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -424,53 +433,69 @@ void ProcessFFT::experiment(){
     ofNoFill();
     ofPushMatrix();
     
+    // choose the color based on the band with the loudest sound
     ofColor newColor;
+    // using hsb color to have the same saturation and brightness for the circles
     newColor.setHsb(ofMap(sin(loudestBand), 0, 1,   255, 0), 150, 255, 200);
     ofSetColor(newColor);
     
+    // drawing the required circles
     ofDrawCircle(ofRandom(ofGetWindowWidth()*getLoudBand()/numFFTbins), ofRandom(ofGetWindowHeight()), getSmoothedUnScaledLoudestValue());
     
     ofPopMatrix();
     ofPopStyle();
     
-    
-    //    }
-    
-    
-    
 }
 //---------------------------------------------
+
+/**
+* func:        soundArtImage
+* input:
+* process:    Draws the image bars based on the sound input
+* output:       Image Art
+*/
+
+
 void ProcessFFT::soundArtImage(){
     ofSetBackgroundAuto(false);
+    // getting the width and height of the images
     int imgWidth = image[0].getWidth();
     int imgHeight = image[0].getHeight();
     
     
-    //not normalized
+    // not normalized
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetLineWidth(2);
-    for(int i=0; i<fftSpectrum.size(); i++){ //for the number of columns
-         
-        
-        image[i%noImage].draw(ofGetWidth()*((float)i /numFFTbins), ofGetHeight() , ofGetWidth() /numFFTbins, -ofMap(fftSpectrum[i], 0, volumeRange, 0, ofGetHeight()  ));
     
-        ofPushMatrix();
-        image[16 - i%5].draw(0,   ofGetHeight()*((float)i /numFFTbins),  ofMap(fftSpectrum[i], 0, volumeRange, 0, ofGetHeight()  ) , ofGetWidth() /numFFTbins);
-        ofPopMatrix();
+    //for the number of columns
+    for(int i=0; i<fftSpectrum.size(); i++){
+        drawImages(i);
+        // display the image based on
         
-        
-        ofPushMatrix();
-        //            ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-//        ofRotateDeg(45);
-        image[i%noImage].draw(ofGetWidth(), ofGetHeight()*((float)i /numFFTbins), -ofMap(fftSpectrum[i], 0, volumeRange, 0, ofGetHeight()  ) , ofGetWidth() /numFFTbins);
-        ofPopMatrix();
- 
     }
     ofPopStyle();
    
 }
 
+void ProcessFFT::drawImages(int i ){
+    
+    image[i%noImage].draw(ofGetWidth()*((float)i /numFFTbins), ofGetHeight() , ofGetWidth() /numFFTbins, -ofMap(fftSpectrum[i], 0, volumeRange, 0, ofGetHeight()  ));
+
+    ofPushMatrix();
+    image[16 - i%5].draw(0,   ofGetHeight()*((float)i /numFFTbins),  ofMap(fftSpectrum[i], 0, volumeRange, 0, ofGetHeight()  ) , ofGetWidth() /numFFTbins);
+    ofPopMatrix();
+    
+    
+    ofPushMatrix();
+    
+    //        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+    //        ofRotateDeg(45);
+    
+    image[i%noImage].draw(ofGetWidth(), ofGetHeight()*((float)i /numFFTbins), -ofMap(fftSpectrum[i], 0, volumeRange, 0, ofGetHeight()  ) , ofGetWidth() /numFFTbins);
+    ofPopMatrix();
+
+}
 //---------------------------------------------
 void ProcessFFT::drawDebug(){
     ofPushMatrix();
