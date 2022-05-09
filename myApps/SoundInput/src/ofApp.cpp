@@ -3,30 +3,42 @@
 void ofApp::setup() {
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
+    ofSetCircleResolution(30);
+    
+    // setting the sound input
     fft.setup();
+    
+    //initializing the bool values
     showGraph = true;
     clearScreen = false;
+    
+    //setting the background
     ofBackground(0,0,0);
+    ofSetBackgroundAuto(false);
+    
+    
     ofSetLineWidth(2);
     ofNoFill();
-    ofSetCircleResolution(30);
-    ofSetBackgroundAuto(false);
+    
+    //setting the default art to display
     artChoice = 2;
     
+    //setting the delay time
     sucessTimeDelta = 2000;
-    
-    
 }
 
 void ofApp::update() {
     fft.update();
     ofSeedRandom(39);
-    
-  
 }
 
 void ofApp::draw() {
+    
     if (showGraph){
+        // letting the user choose the art
+            // 0 for the circle pattern
+            // 1 for experimental circle and image
+            // 2 for image art
         
         if (artChoice == 0){
             fft.soundArt();}
@@ -35,9 +47,13 @@ void ofApp::draw() {
         else
             fft.soundArtImage();
     }
+    // code to clear the screen
     if (clearScreen){
+        
         ofPushMatrix();
         ofPushStyle();
+        
+        // code to delay time by sucessTimeDelta
         float time = ofGetElapsedTimef();
         actualTime = ofGetElapsedTimeMillis();
         if (actualTime - time > sucessTimeDelta) {
@@ -45,41 +61,18 @@ void ofApp::draw() {
             ofClear(0,255);
         }
         ofSetColor(0, 0, 0, 30);
+        
+        // code to clear the screen
         ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
         clearScreen = false;
         ofPopMatrix();
         ofPopStyle();
     }
-    
-//    if (clearScreen && showGraph){
-//        showGraph = false;
-//        clearScreen = false;
-//        ofPushMatrix();
-//        ofSetColor(0, 0, 0, 30);
-//        ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-//        ofNoFill();
-//        ofPopMatrix();
-//
-//    }
-    
-    
-    
-    
-    
 }
 
 void ofApp::keyPressed(int key){
+    int volRange = fft.getVolumeRange();
     
-    //toggle between normalized and not to get a sense of the effects
-    //You will need to set a volume range if you're not normalizing everything - but this will depend on your sound source and input type to determine the maximum volume range of your codez
-    
-    //    if(key=='q'){
-    //        fft.setVolumeRange(100);
-    //        fft.setNormalize(false);
-    //    }
-    //    if(key=='r'){
-    //        fft.setNormalize(true);
-    //    }
     switch(key){
         case 't':
             showGraph = !showGraph;
@@ -87,16 +80,19 @@ void ofApp::keyPressed(int key){
 //        case 's':
 //            clearScreen = !clearScreen;
 //            break;
+            
+        // press spacebar to change between the art syles
         case ' ':
             artChoice = (artChoice + 1) % 2;
             break;
             
+        // press q to decrease the number of images used
         case 'q':
             if (fft.getNoImage() < 10) {break;}
             fft.setNoImage(fft.getNoImage() - 2);
             break;
             
-            
+        // increase the number of images used
         case 'w':
             if (fft.getNoImage() < 35)  
             fft.setNoImage(fft.getNoImage() +2);
@@ -104,20 +100,22 @@ void ofApp::keyPressed(int key){
             
         // press up to increase playback volume
         case OF_KEY_UP:
-            fft.setVolumeRange(fft.getVolumeRange()+5);
             
+            
+            if (volRange < 600){
+                fft.setVolumeRange(fft.getVolumeRange()+5);
+            }
             break;
+            
         // press down to decrease playback volume
         case OF_KEY_DOWN:
-            int volRange = fft.getVolumeRange();
+             
             
             if (volRange > 10){
                 fft.setVolumeRange(fft.getVolumeRange()-5);
             }
             break;
-        
-     
-            
+    
     }
     
 }
