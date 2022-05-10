@@ -68,6 +68,8 @@ The above images are my inspirations that led me to work on the project.
 
 ## Output
 
+#### [Video](https://www.youtube.com/watch?v=1Xj5tAwO0hI) with output at the end
+
 *Image produced by D2 sounds when crowded*
 ![](bin/output/D2.png)
 
