@@ -4,11 +4,17 @@
 
 **Can sound produce art pieces?**
 
-## Concept
+## Description
 
 The idea for the project first came from the famous paintings of Gustav Klimt who ushered in a new period of figuration that jettisoned rigid tenets of naturalism and classicism. An example is attached below. Similarly, the art work by Zach Liberman, which was introduced to us in class. 
 
-During my second assignment, I questioned myself whether the everyday sound we hear can produce a unique image. The sound at the dining hall, the sound at the football stadium or the sound of professors explaining in class. All the sounds at the moment are unique and they relate to a certain time. This made me question how I could combine sound to make art pieces that would evoke similar emotions as a Klimt. This led me to work with sound inputs based on their frequency bands, volume and pitch. To add unique color pallet, style and feelings, I use the image for a respective location. So if I want to create sound based on a certain location, I can take pictures of that location and use it them to determine the color pallet for the art piece.  
+During my second assignment, I questioned myself whether the everyday sound we hear can produce a unique image. The sound at the dining hall, the sound at the football stadium or the sound of professors explaining in class. All the sounds at the moment are unique and they relate to a certain time. This made me question how I could combine sound to make art pieces that would evoke similar emotions as a Klimt. This led me to work with sound inputs based on their frequency bands, volume and pitch. To add unique color pallet, style and feelings, I use the image for a respective location. 
+
+So if I want to create art based on sound of the certain location, I can take pictures of that location and use it them to determine the color pallet for the art piece.  
+
+## Concept
+
+The image bars are based on the sound bands of the particular space. I have divided the audiable sound into 32 bands and each of the bar represent the frequency band. The users have control over the maximum volume range, so as to allow the sound detection to be changed as per the need of the space. Higher volume range for louder places and lower for quiter places. The user also has control over the number of images to be used. Greater number of images means more diverse colors in the pallet and lower number represents more repetitions of same images. 
 
 ### Inspiration
 ---
@@ -19,22 +25,10 @@ During my second assignment, I questioned myself whether the everyday sound we h
 
 The above images are my inspirations that led me to work on the project. 
 
-## Output
-
-*Image produced by D2 sounds when crowded*
-![](bin/output/D2.png)
-
-*Image produced by D2 sounds when empty*
-![](bin/output/D2_Not_Crowded.png)
-
-*Image produced by sounds of other presenting in class* 
-
-![](bin/output/sound%20in%20class.png)
-
 ### Algorithm
 
 
- Function to go through the list of bands and draw the different images:
+ Function to go through the list of bands and draw the different images (based on the input read on the particular band)
  
  ```C++
  
@@ -63,6 +57,7 @@ The above images are my inspirations that led me to work on the project.
  
  ```
  
+ Code to draw the differnt images on the band bar. The noImage variable controls the number of image to be displayed. 
  ```c++
  //portion of drawImages
  
@@ -71,7 +66,21 @@ The above images are my inspirations that led me to work on the project.
  ```
 
 
+## Output
+
+*Image produced by D2 sounds when crowded*
+![](bin/output/D2.png)
+
+*Image produced by D2 sounds when empty*
+![](bin/output/D2_Not_Crowded.png)
+
+*Image produced by sounds of other presenting in class* 
+
+![](bin/output/sound%20in%20class.png)
+
 ## Reflection / Challenges
+
+The first challange was finding a library that does the sound input processing, which was a difficult find. I had to edit the library to find a work around. I am not fully satisfied with the project however can see the potential that it can get to given that I put in more time and effort.
 
 <!-- shapes
 colors
