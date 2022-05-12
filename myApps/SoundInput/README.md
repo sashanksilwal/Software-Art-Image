@@ -1,4 +1,4 @@
-# SoundInput
+# [SoundInput](https://youtu.be/0zlb86_C0IE)
 
 **How much sould an artist have control on a prject?**
 
@@ -23,7 +23,7 @@ The image bars are based on the sound bands of the particular space. I have divi
 | ![](https://www.klimtgallery.org/thumbnail/45000/45454/mini_normal/Apple-Tree-I.jpg?ts=1459229076)   | <img width="618" alt="Screen Shot 2022-05-09 at 11 25 25 PM" src="https://user-images.githubusercontent.com/25387553/167482853-e4c07fbe-3219-4245-a50a-916a9ba8de4d.png">      |  
 | Gustav Klimt   | Zach Liberman        |  
 
-The above images are my inspirations that led me to work on the project. 
+The above images are my inspirations that led me to work on the project. I wanted to acheive something similar however allowing the sound to make the image rather than giving control to the user to allow for natural flow of the art making. 
 
 ### Algorithm
 
@@ -68,7 +68,7 @@ The above images are my inspirations that led me to work on the project.
 
 ## Output
 
-#### [Video](https://www.youtube.com/watch?v=1Xj5tAwO0hI) with output at the end
+### [Video https://youtu.be/0zlb86_C0IE](https://youtu.be/0zlb86_C0IE)
 
 *Image produced by D2 sounds when crowded*
 ![](bin/output/D2.png)
@@ -83,6 +83,11 @@ The above images are my inspirations that led me to work on the project.
 ## Reflection / Challenges
 
 The first challange was finding a library that does the sound input processing, which was a difficult find. I had to edit the library to find a work around. I am not fully satisfied with the project however can see the potential that it can get to given that I put in more time and effort.
+
+### Further Improvements
+
+For further improvement allowing the user to input some form of their personal touch like rotation, speed of animation and the shape of the images would allow the project to make it more personal to the user. 
+
 
 <!-- shapes
 colors
